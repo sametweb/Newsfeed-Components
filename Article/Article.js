@@ -145,15 +145,23 @@ function createArticle(articleObj) {
   article.appendChild(p3);
   article.appendChild(expand);
 
+  article.style.transition = "height 1s ease-out";
+
   title.textContent = articleObj.title;
   date.textContent = articleObj.date;
   p1.textContent = articleObj.firstParagraph;
   p2.textContent = articleObj.secondParagraph;
   p3.textContent = articleObj.thirdParagraph;
-  expand.textContent = "E";
+
+  expand.textContent = "Read More";
 
   expand.addEventListener("click", function() {
     article.classList.toggle("article-open");
+    if (article.classList.contains("article-open")) {
+      expand.textContent = "Read Less";
+    } else {
+      expand.textContent = "Read More";
+    }
   });
 
   return article;
