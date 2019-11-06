@@ -132,10 +132,12 @@ function createArticle(articleObj) {
   let p2 = document.createElement("p");
   let p3 = document.createElement("p");
   let expand = document.createElement("span");
+  let close = document.createElement("span");
 
   article.classList.add("article");
   date.classList.add("date");
   expand.classList.add("expandButton");
+  close.classList.add("close");
 
   articles.appendChild(article);
   article.appendChild(title);
@@ -144,6 +146,7 @@ function createArticle(articleObj) {
   article.appendChild(p2);
   article.appendChild(p3);
   article.appendChild(expand);
+  article.appendChild(close);
 
   article.style.transition = "height 1s ease-out";
 
@@ -154,6 +157,7 @@ function createArticle(articleObj) {
   p3.textContent = articleObj.thirdParagraph;
 
   expand.textContent = "Read More";
+  close.textContent = "x";
 
   expand.addEventListener("click", function() {
     article.classList.toggle("article-open");
@@ -162,6 +166,14 @@ function createArticle(articleObj) {
     } else {
       expand.textContent = "Read More";
     }
+  });
+
+  close.addEventListener("click", function() {
+    article.parentNode.removeChild(article);
+    noContent = document.createElement("h2");
+    noContent.style.textAlign = "center";
+    noContent.textContent = "Unfortunately, there is nothing to show";
+    document.querySelector(".article") ? null : articles.prepend(noContent);
   });
 
   return article;

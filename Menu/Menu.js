@@ -51,4 +51,4 @@ menuItems.forEach(item => createMenu(item)); //Run createMenu for each item
 
 var menuButton = $(".menu-button"); //Select menu button
 
-menuButton.on("click", () => $(".menu").toggle("fast")); //jQuery version of addEventListener
+menuButton.on("click", () => menu.toggle("fast")); //jQuery version of addEventListener
