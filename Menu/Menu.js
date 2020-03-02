@@ -1,12 +1,12 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
 let menuItems = [
-  'Students',
-  'Faculty',
+  "Students",
+  "Faculty",
   "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+  "Tech Trends",
+  "Music",
+  "Log Out"
 ];
 
 /* 
@@ -33,3 +33,22 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+// Stretch jQuery solution
+let header = $(".header"); //Select header
+let menu = $('<div class="menu"></div>'); // Create menu
+let ul = $("<ul></ul>"); // Create unordered list
+
+header.append(menu); //Add menu to header
+menu.append(ul); //Add unordered list to menu
+
+function createMenu(menuItem) {
+  let li = $("<li></li>"); //Create list item
+  li.text(menuItem); //Assign what will the menu item say
+  ul.append(li); //Add list item to the list
+}
+
+menuItems.forEach(item => createMenu(item)); //Run createMenu for each item
+
+var menuButton = $(".menu-button"); //Select menu button
+
+menuButton.on("click", () => menu.toggle("fast")); //jQuery version of addEventListener
